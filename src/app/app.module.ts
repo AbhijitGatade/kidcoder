@@ -11,6 +11,7 @@ import { ClassesComponent } from './classes/classes.component';
 import { ContactComponent } from './contact/contact.component';
 import { TeachersComponent } from './teachers/teachers.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { GalleryComponent } from './gallery/gallery.component';
     ClassesComponent,
     ContactComponent,
     TeachersComponent,
-    GalleryComponent
+    GalleryComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

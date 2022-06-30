@@ -5,16 +5,17 @@ import { ClassesComponent } from './classes/classes.component';
 import { ContactComponent } from './contact/contact.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { HomeComponent } from './home/home.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { TeachersComponent } from './teachers/teachers.component';
 
 const routes: Routes = [
+  {path:"**",pathMatch: 'full',component:PagenotfoundComponent},
   {path:"", component:HomeComponent},
   {path:"about", component:AboutComponent},
   {path:"classes", component:ClassesComponent},
   {path:"teachers", component:TeachersComponent},
   {path:"gallery", component:GalleryComponent},
   {path:"contact", component:ContactComponent}
-
 ];
 
 @NgModule({
