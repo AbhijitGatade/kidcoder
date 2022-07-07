@@ -9,16 +9,17 @@
         </button>
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
             <div class="navbar-nav font-weight-bold mx-auto py-0">
-                <a href="index.html" class="nav-item nav-link active" routerLink="">Home</a>
-                <a href="about.html" class="nav-item nav-link" routerLink="about">About</a>
-                <a href="class.html" class="nav-item nav-link" routerLink="classes">Classes</a>
-                <a href="team.html" class="nav-item nav-link" routerLink="teachers">Teachers</a>
-                <a href="gallery.html" class="nav-item nav-link" routerLink="gallery">Gallery</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                <a class="nav-item nav-link active" routerLink="">Home</a>
+                <a class="nav-item nav-link" routerLink="about">About</a>
+                <a class="nav-item nav-link" routerLink="classes">Classes</a>
+                <a class="nav-item nav-link" routerLink="teachers">Teachers</a>
+                <a class="nav-item nav-link" routerLink="gallery">Gallery</a>
+                <div class="nav-item dropdown" *ngIf="isadmin">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Administrator</a>
                     <div class="dropdown-menu rounded-0 m-0">
-                        <a href="blog.html" class="dropdown-item">Blog Grid</a>
-                        <a href="single.html" class="dropdown-item">Blog Detail</a>
+                        <a routerLink="admin/teachers" class="dropdown-item">Teachers</a>
+                        <a routerLink="admin/courses" class="dropdown-item">Courses</a>
+                        <a routerLink="admin/gallery" class="dropdown-item">Gallery</a>
                     </div>
                 </div>
                 <a href="contact.html" class="nav-item nav-link" routerLink="contact">Contact</a>

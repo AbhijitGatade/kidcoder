@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-teachers',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeachersComponent implements OnInit {
 
-  constructor() { }
+  teachers:any;
+
+  constructor(private api:ApiService) { }
 
   ngOnInit(): void {
+    this.api.post("admin/teachers", {}).subscribe((result:any)=>{
+      this.teachers = result.data;
+      console.log(this.teachers);
+    })
   }
 
 }
