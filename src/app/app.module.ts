@@ -14,6 +14,8 @@ import { TeachersComponent } from './teachers/teachers.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { LoginComponent } from './login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ApiService } from './api.service';
 
 @NgModule({
   declarations: [
@@ -33,9 +35,11 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    CarouselModule
+    CarouselModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

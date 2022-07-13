@@ -16,8 +16,13 @@ const routes: Routes = [
   { path: "teachers", component: TeachersComponent },
   { path: "gallery", component: GalleryComponent },
   { path: "contact", component: ContactComponent },
-  { path: "login", component: LoginComponent },
-  { path: "**", component: PagenotfoundComponent }
+  { path: "login", component: LoginComponent },  
+  {
+    path: "admin",
+    loadChildren: () =>
+      import("./admin/admin.module").then((m) => m.AdminModule),
+  },
+  { path: "**", component: PagenotfoundComponent },
 ];
 
 @NgModule({
