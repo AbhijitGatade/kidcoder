@@ -11,14 +11,13 @@ export class ClassesComponent implements OnInit {
   baseurl = this.api.baseurl;
   classes:any;
 
-  constructor(private api:ApiService) {
+  constructor(private api:ApiService) {}
+
+  ngOnInit(): void {
     this.api.post("admin/courses", {}).subscribe((result:any)=>{
       this.classes = result.data;
       console.log(this.classes);
     })
-   }
-
-  ngOnInit(): void {
   }
 
 }

@@ -8,6 +8,8 @@ import { TeachersComponent } from './teachers/teachers.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import { CourseComponent } from './course/course.component';
 import { CoursesComponent } from './courses/courses.component';
+import { GalleriesComponent } from './galleries/galleries.component';
+import { GalleryComponent } from './gallery/gallery.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { CoursesComponent } from './courses/courses.component';
     TeachersComponent,
     TeacherComponent,
     CourseComponent,
-    CoursesComponent
+    CoursesComponent,
+    GalleriesComponent,
+    GalleryComponent
   ],
   imports: [
     CommonModule,

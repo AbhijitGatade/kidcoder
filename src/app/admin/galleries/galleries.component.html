@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <h2>Photos ({{ galleries.length }})</h2>
+    <a routerLink="../gallery/0" class="btn btn-success pull-right float-right">Add Photos</a>
+    <br><br>
+    <div class="row">
+        <div class="col-lg-12 table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Actions</th>
+                    <th>No</th>
+                    <th>Image</th>
+                    <th>Name</th>                    
+                </tr>
+                <tr *ngFor="let gallery of galleries;let i = index;">
+                    <td>
+                        <button routerLink="../gallery/{{ gallery._id }}" class="btn btn-primary"><i class="fa fa-edit"></i></button> &nbsp;
+                        <button  class="btn btn-danger" (click)="deletegallery(gallery._id)"><i class="fa fa-trash"></i></button>
+                    </td>
+                    <td>{{ i + 1}}</td>
+                    <td><img src="{{ baseurl + gallery.photo }}" style="height:80px;" /></td>
+                    <td>{{ gallery.name }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<br>

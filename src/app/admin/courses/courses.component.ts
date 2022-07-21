@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/api.service';
 })
 export class CoursesComponent implements OnInit {
   baseurl = this.api.baseurl;
-  courses:any;
+  courses:any=[];
   constructor(private api:ApiService) { }
 
   ngOnInit(): void {

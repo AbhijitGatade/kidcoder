@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/api.service';
 })
 export class TeachersComponent implements OnInit {
   baseurl = this.api.baseurl;
-  teachers:any;
+  teachers:any=[];
   constructor(private api:ApiService) { }
 
   ngOnInit(): void {
