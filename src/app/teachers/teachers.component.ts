@@ -8,7 +8,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./teachers.component.css']
 })
 export class TeachersComponent implements OnInit {
-
+  baseurl = this.api.baseurl;
   teachers:any;
 
   constructor(private api:ApiService) { }

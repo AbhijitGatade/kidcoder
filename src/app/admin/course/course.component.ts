@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LazyLoadService } from 'ngx-owl-carousel-o/lib/services/lazyload.service';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
-  selector: 'app-teacher',
-  templateUrl: './teacher.component.html',
-  styleUrls: ['./teacher.component.css']
+  selector: 'app-course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.css']
 })
-export class TeacherComponent implements OnInit {
+export class CourseComponent implements OnInit {
+
   id: null | string = "";
-  teacher: any;
+  course: any;
   formdata: any;
   photo = "";
 
@@ -21,26 +21,26 @@ export class TeacherComponent implements OnInit {
     this.id = this.route.snapshot.paramMap.get("id");
     this.id = this.id == "0" ? "" : this.id;
     if (this.id != "") {
-      var reply = this.api.post("admin/teacher", { data: { id: this.id } });
+      var reply = this.api.post("admin/course", { data: { id: this.id } });
       reply.subscribe((result: any) => {
-        this.teacher = result.data;
-        console.log(this.teacher);
+        this.course = result.data;
+        console.log(this.course);
         this.load();
       });
     }
     this.load();
-  }
 
+  }
+  
   load() {
     this.formdata = new FormGroup(
       {
         id: new FormControl(this.id, Validators.required),
-        name: new FormControl(this.teacher == null ? "" : this.teacher.name, Validators.required),
-        profession: new FormControl(this.teacher == null ? "" : this.teacher.profession, Validators.required),
+        name: new FormControl(this.course == null ? "" : this.course.name, Validators.required),
+        description: new FormControl(this.course == null ? "" : this.course.description, Validators.required),
         photo: new FormControl("", Validators.required),
-        twitterlink: new FormControl(this.teacher == null ? "" : this.teacher.twitterlink, Validators.required),
-        facebooklink: new FormControl(this.teacher == null ? "" : this.teacher.facebooklink, Validators.required),
-        LinkedInlink: new FormControl(this.teacher == null ? "" : this.teacher.LinkedInlink, Validators.required)
+        timing: new FormControl(this.course == null ? "" : this.course.timing, Validators.required),
+        fees: new FormControl(this.course == null ? "" : this.course.fees, Validators.required)
       });
   }
 
@@ -62,11 +62,11 @@ export class TeacherComponent implements OnInit {
   onClickSumbit(data: any) {
     data.photo = this.photo;
     var reqdata = { "data": data };
-    var reply = this.api.post("admin/saveteacher", reqdata);
+    var reply = this.api.post("admin/savecourse", reqdata);
     reply.subscribe((result: any) => {
       var status = result.status;
       if (status == "success") {
-        this.router.navigate(["./admin/teachers"]);
+        this.router.navigate(["./admin/courses"]);
       }
       else {
         alert("Something went wrong.");

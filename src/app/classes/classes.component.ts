@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-classes',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClassesComponent implements OnInit {
 
-  constructor() { }
+  baseurl = this.api.baseurl;
+  classes:any;
+
+  constructor(private api:ApiService) {
+    this.api.post("admin/courses", {}).subscribe((result:any)=>{
+      this.classes = result.data;
+      console.log(this.classes);
+    })
+   }
 
   ngOnInit(): void {
   }
