@@ -11,6 +11,7 @@ import { TeachersComponent } from './teachers/teachers.component';
 
 const routes: Routes = [  
   { path: "", component: HomeComponent },
+  { path: "home", component: HomeComponent },
   { path: "about", component: AboutComponent },
   { path: "classes", component: ClassesComponent },
   { path: "teachers", component: TeachersComponent },

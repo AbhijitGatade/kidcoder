@@ -4,24 +4,39 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2>Add Teacher</h2>
-                    <form class="register-form" role="form" [formGroup]="formdata" (ngSubmit)="onClickSumbit(formdata.value)">
-                        <input type="hidden" class="form-control" formControlName="id" >
+                    <form class="register-form" role="form" [formGroup]="formdata"
+                        (ngSubmit)="onClickSumbit(formdata.value)">
+                        <input type="hidden" class="form-control" formControlName="id">
                         <input type="hidden" class="form-control" formControlName="photo">
-                        <div class="font-weight-bold form-group">                        
-                        <label>Name</label>
-                        <input type="text" class="form-control" formControlName="name"><br>
-                        <label>Profession</label>
-                        <input type="text" class="form-control" formControlName="profession"><br>
-                        <label>Photo</label>
-                        <input type="file" class="form-control" (change)="filechanged($event)" accept="image/*"><br>
-                        <label>Twitterlink</label>
-                        <input type="text" class="form-control" formControlName="twitterlink"><br>
-                        <label>Facebooklink</label>
-                        <input type="text" class="form-control" formControlName="facebooklink"><br>
-                        <label>LinkedInlink</label>
-                        <input type="text" class="form-control" formControlName="LinkedInlink"><br>
-                        <input type="submit" value="Save" class="btn btn-success btn-lg">
-                       </div>
+                        <div class="form-group">
+                            <label class="font-weight-bold">Name</label>
+                            <input type="text" class="form-control" formControlName="name">
+                            <span *ngIf="!formdata.controls.name.valid && formdata.controls.name.touched"
+                                class="text-danger">Please enter Name.</span><br>
+                            <label class="font-weight-bold">Profession</label>
+                            <input type="text" class="form-control" formControlName="profession">
+                            <span *ngIf="!formdata.controls.profession.valid && formdata.controls.profession.touched"
+                                class="text-danger">Please enter Profession.</span><br>
+                            <label class="font-weight-bold">Photo</label>
+                            <input type="file" class="form-control" (change)="filechanged($event)" accept="image/*">
+                            <span *ngIf="!formdata.controls.photo.valid && formdata.controls.name.touched"
+                                class="text-danger">Please select Photo.</span><br>
+                            <label class="font-weight-bold">Twitterlink</label>
+                            <input type="text" class="form-control" formControlName="twitterlink">
+                            <span *ngIf="!formdata.controls.twitterlink.valid && formdata.controls.twitterlink.touched"
+                                class="text-danger">Please enter Twitterlink.</span><br>
+                            <label class="font-weight-bold">Facebooklink</label>
+                            <input type="text" class="form-control" formControlName="facebooklink">
+                            <span *ngIf="!formdata.facebooklink.valid && formdata.controls.facebooklinktouched"
+                                class="text-danger">Please enter Facebooklink.</span><br>
+                            <label class="font-weight-bold">LinkedInlink</label>
+                            <input type="text" class="form-control" formControlName="LinkedInlink">
+                            <span
+                                *ngIf="!formdata.controls.LinkedInlink.valid && formdata.controls.LinkedInlink.touched"
+                                class="text-danger">Please enter LinkedInlink.</span><br>
+                            <input [disabled]="!formdata.valid" type="submit" value="Save"
+                                class="btn btn-success btn-lg">
+                        </div>
                     </form>
                 </div>
             </div>

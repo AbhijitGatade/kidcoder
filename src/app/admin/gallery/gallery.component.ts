@@ -14,6 +14,7 @@ export class GalleryComponent implements OnInit {
   gallery: any;
   formdata: any;
   photo = "";
+  message = "";
 
   constructor(private router: Router, private api: ApiService, private route: ActivatedRoute) { }
 
@@ -34,10 +35,9 @@ export class GalleryComponent implements OnInit {
   load() {
     this.formdata = new FormGroup(
       {
-        id: new FormControl(this.id, Validators.required),
+        id: new FormControl(this.id),
         name: new FormControl(this.gallery == null ? "" : this.gallery.name, Validators.required),
-        photo: new FormControl("", Validators.required)
-        
+        photo: new FormControl("")        
       });
   }
 
@@ -50,6 +50,7 @@ export class GalleryComponent implements OnInit {
       reader.onload = () => {
         if (reader.result != null) {
           this.photo = reader.result.toString();
+          this.formdata.photo = this.photo;
         }
       }
     }
@@ -58,6 +59,11 @@ export class GalleryComponent implements OnInit {
 
   onClickSumbit(data: any) {
     data.photo = this.photo;
+    if(data.photo == "" && this.id == "")
+    {
+      this.message = "Please select image.";
+      return;
+    }
     var reqdata = { "data": data };
     var reply = this.api.post("admin/savegallery", reqdata);
     reply.subscribe((result: any) => {

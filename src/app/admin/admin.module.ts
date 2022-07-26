@@ -20,7 +20,7 @@ import { GalleryComponent } from './gallery/gallery.component';
     CourseComponent,
     CoursesComponent,
     GalleriesComponent,
-    GalleryComponent
+    GalleryComponent,
   ],
   imports: [
     CommonModule,

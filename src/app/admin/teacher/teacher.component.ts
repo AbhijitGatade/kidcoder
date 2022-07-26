@@ -14,6 +14,7 @@ export class TeacherComponent implements OnInit {
   teacher: any;
   formdata: any;
   photo = "";
+  message = "";
 
   constructor(private router: Router, private api: ApiService, private route: ActivatedRoute) { }
 
@@ -34,10 +35,10 @@ export class TeacherComponent implements OnInit {
   load() {
     this.formdata = new FormGroup(
       {
-        id: new FormControl(this.id, Validators.required),
+        id: new FormControl(this.id),
         name: new FormControl(this.teacher == null ? "" : this.teacher.name, Validators.required),
         profession: new FormControl(this.teacher == null ? "" : this.teacher.profession, Validators.required),
-        photo: new FormControl("", Validators.required),
+        photo: new FormControl(""),
         twitterlink: new FormControl(this.teacher == null ? "" : this.teacher.twitterlink, Validators.required),
         facebooklink: new FormControl(this.teacher == null ? "" : this.teacher.facebooklink, Validators.required),
         LinkedInlink: new FormControl(this.teacher == null ? "" : this.teacher.LinkedInlink, Validators.required)
@@ -61,6 +62,11 @@ export class TeacherComponent implements OnInit {
 
   onClickSumbit(data: any) {
     data.photo = this.photo;
+    if(data.photo == "" && this.id == "")
+    {
+      this.message = "Please select image.";
+      return;
+    }
     var reqdata = { "data": data };
     var reply = this.api.post("admin/saveteacher", reqdata);
     reply.subscribe((result: any) => {

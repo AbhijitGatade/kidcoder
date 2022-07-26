@@ -17,7 +17,7 @@
                         <button  class="btn btn-danger" (click)="deleteCourse(course._id)"><i class="fa fa-trash"></i></button>
                     </td>
                     <td>{{ i + 1}}</td>
-                    <td><img src="{{ baseurl + course.photo }}" style="height:80px;" /></td>
+                    <td> <img src="{{ baseurl + course.photo }}" onerror="this.src = 'https://cdn-icons-png.flaticon.com/512/1053/1053244.png'" style="height:80px;" ></td>
                     <td>{{ course.name }}</td>
                 </tr>
             </table>

@@ -14,6 +14,7 @@ export class CourseComponent implements OnInit {
   course: any;
   formdata: any;
   photo = "";
+  message ="";
 
   constructor(private router: Router, private api: ApiService, private route: ActivatedRoute) { }
 
@@ -35,10 +36,10 @@ export class CourseComponent implements OnInit {
   load() {
     this.formdata = new FormGroup(
       {
-        id: new FormControl(this.id, Validators.required),
+        id: new FormControl(this.id),
         name: new FormControl(this.course == null ? "" : this.course.name, Validators.required),
         description: new FormControl(this.course == null ? "" : this.course.description, Validators.required),
-        photo: new FormControl("", Validators.required),
+        photo: new FormControl(""),
         timing: new FormControl(this.course == null ? "" : this.course.timing, Validators.required),
         fees: new FormControl(this.course == null ? "" : this.course.fees, Validators.required)
       });
@@ -61,6 +62,11 @@ export class CourseComponent implements OnInit {
 
   onClickSumbit(data: any) {
     data.photo = this.photo;
+    if(data.photo == "" && this.id == "")
+    {
+      this.message = "Please select image.";
+      return;
+    }
     var reqdata = { "data": data };
     var reply = this.api.post("admin/savecourse", reqdata);
     reply.subscribe((result: any) => {
