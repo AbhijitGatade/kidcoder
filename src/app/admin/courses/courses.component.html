@@ -11,7 +11,12 @@
                     <th>Image</th>
                     <th>Courses</th>                    
                 </tr>
-                <tr *ngFor="let course of courses;let i = index;">
+                <tr *ngFor="let course of courses  | paginate
+                : {
+                    itemsPerPage: itemsPerPage,
+                    currentPage: page,
+                    totalItems: totalItems
+                  };let i = index;">
                     <td>
                         <button routerLink="../course/{{ course._id }}" class="btn btn-primary"><i class="fa fa-edit"></i></button> &nbsp;
                         <button  class="btn btn-danger" (click)="deleteCourse(course._id)"><i class="fa fa-trash"></i></button>
@@ -25,3 +30,7 @@
     </div>
 </div>
 <br>
+<pagination-controls
+  class="pagi"
+  (pageChange)="page = $event"
+></pagination-controls>

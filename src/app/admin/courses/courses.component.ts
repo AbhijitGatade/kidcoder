@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 
@@ -9,7 +10,11 @@ import { ApiService } from 'src/app/api.service';
 export class CoursesComponent implements OnInit {
   baseurl = this.api.baseurl;
   courses:any=[];
-  constructor(private api:ApiService) { }
+  page : number = 1;
+  itemsPerPage = 3;
+  totalItems : any; 
+
+  constructor(private api:ApiService,private http: HttpClient) { }
 
   ngOnInit(): void {
     this.load();
@@ -18,6 +23,8 @@ export class CoursesComponent implements OnInit {
   load(){
     this.api.post("admin/courses", {}).subscribe((result:any)=>{
       this.courses = result.data;
+      this.page =  0;
+      this.totalItems = result.totalCourses;
       console.log(this.courses);
     });
   }

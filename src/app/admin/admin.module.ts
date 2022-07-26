@@ -10,6 +10,8 @@ import { CourseComponent } from './course/course.component';
 import { CoursesComponent } from './courses/courses.component';
 import { GalleriesComponent } from './galleries/galleries.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { GalleryComponent } from './gallery/gallery.component';
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers:[ApiService]
 
