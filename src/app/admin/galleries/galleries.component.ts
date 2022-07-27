@@ -9,6 +9,10 @@ import { ApiService } from 'src/app/api.service';
 export class GalleriesComponent implements OnInit {
   baseurl = this.api.baseurl;
   galleries:any=[];
+  page : number = 1;
+  itemsPerPage = 3;
+  totalItems : any;
+
   constructor(private api:ApiService) { }
 
   ngOnInit(): void {
@@ -18,6 +22,8 @@ export class GalleriesComponent implements OnInit {
   load(){
     this.api.post("admin/galleries", {}).subscribe((result:any)=>{
       this.galleries = result.data;
+      this.page =  0;
+      this.totalItems = result.totalCourses;
       console.log(this.galleries);
     });
   }

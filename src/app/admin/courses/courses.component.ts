@@ -12,7 +12,7 @@ export class CoursesComponent implements OnInit {
   courses:any=[];
   page : number = 1;
   itemsPerPage = 3;
-  totalItems : any; 
+  totalItems : any;
 
   constructor(private api:ApiService,private http: HttpClient) { }
 

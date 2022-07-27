@@ -11,12 +11,17 @@
                     <th>Image</th>
                     <th>Name</th>                    
                 </tr>
-                <tr *ngFor="let gallery of galleries;let i = index;">
+                <tr *ngFor="let gallery of galleries | paginate
+                : {
+                    itemsPerPage: itemsPerPage,
+                    currentPage: page,
+                    totalItems: totalItems
+                  };let i = index;">
                     <td>
                         <button routerLink="../gallery/{{ gallery._id }}" class="btn btn-primary"><i class="fa fa-edit"></i></button> &nbsp;
                         <button  class="btn btn-danger" (click)="deletegallery(gallery._id)"><i class="fa fa-trash"></i></button>
                     </td>
-                    <td>{{ i + 1}}</td>
+                    <td>{{i + 1}}</td>
                     <td>
                             <img src="{{ baseurl + gallery.photo }}" onerror="this.src = 'https://cdn-icons-png.flaticon.com/512/1053/1053244.png'" style="height:80px;" >
                     </td>
@@ -27,3 +32,8 @@
     </div>
 </div>
 <br>
+
+<pagination-controls
+  class="pagination justify-content-center"
+  (pageChange)="page = $event"
+></pagination-controls>

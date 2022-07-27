@@ -20,7 +20,12 @@
             <h1 class="mb-4">Our Kids Class Gallery</h1>
         </div>
         <div class="row portfolio-container">
-            <div class="col-lg-4 col-md-6 mb-4 portfolio-item first" *ngFor="let gallery of galleries">
+            <div class="col-lg-4 col-md-6 mb-4 portfolio-item first" *ngFor="let gallery of galleries| paginate
+            : {
+                itemsPerPage: itemsPerPage,
+                currentPage: page,
+                totalItems: totalItems
+              };">
                 <div class="position-relative overflow-hidden mb-2">
                     <img class="img-fluid w-100" src="{{ baseurl + gallery.photo }}" alt="{{ gallery.photo }}">
                 </div>
@@ -29,3 +34,9 @@
     </div>
 </div>
 <!-- Gallery End -->
+
+
+<pagination-controls
+  class="pagination justify-content-center"
+  (pageChange)="page = $event"
+></pagination-controls>

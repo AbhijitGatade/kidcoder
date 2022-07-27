@@ -10,6 +10,10 @@ import { ApiService } from 'src/app/api.service';
 export class TeachersComponent implements OnInit {
   baseurl = this.api.baseurl;
   teachers:any=[];
+  page : number = 1;
+  itemsPerPage = 3;
+  totalItems : any;
+
   constructor(private api:ApiService) { }
 
   ngOnInit(): void {
@@ -19,6 +23,8 @@ export class TeachersComponent implements OnInit {
   load(){
     this.api.post("admin/teachers", {}).subscribe((result:any)=>{
       this.teachers = result.data;
+      this.page =  0;
+      this.totalItems = result.totalCourses;
       console.log(this.teachers);
     });
   }
