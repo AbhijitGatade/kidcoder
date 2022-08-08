@@ -9,7 +9,8 @@
                     <th>Actions</th>
                     <th>No</th>
                     <th>Image</th>
-                    <th>Courses</th>                    
+                    <th>Courses</th> 
+                    <th>Popular Course</th>                   
                 </tr>
                 <tr *ngFor="let course of courses  | paginate
                 : {
@@ -24,6 +25,7 @@
                     <td>{{course.srno}}</td>
                     <td> <img src="{{ baseurl + course.photo }}" onerror="this.src = 'https://cdn-icons-png.flaticon.com/512/1053/1053244.png'" style="height:80px;" ></td>
                     <td>{{ course.name }}</td>
+                    <td>{{course.popular}}</td>
                 </tr>
             </table>
         </div>

@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { NgModule , CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +19,8 @@ import { ApiService } from './api.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { InterceptorService } from './header/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -44,9 +46,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     RouterModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxSpinnerModule,
+
   ],
-  providers: [ApiService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [ApiService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

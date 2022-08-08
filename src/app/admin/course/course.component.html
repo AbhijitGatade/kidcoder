@@ -29,7 +29,11 @@
                             <input type="text" class="form-control" formControlName="fees">
                             <span *ngIf="!formdata.controls.fees.valid && formdata.controls.fees.touched"
                                 class="text-danger">Please enter Fees.</span><br>
-                                <input [disabled]="!formdata.valid" type="submit" value="Save"
+                            <input type="checkbox" formControlName="popular">&nbsp;
+                            <label class="font-weight-bold">Popular</label>
+                            <span *ngIf="!formdata.controls.popular.valid && formdata.controls.popular.touched"
+                                class="text-danger">Please select popular.</span><br>
+                            <input [disabled]="!formdata.valid" type="submit" value="Save"
                                 class="btn btn-success btn-lg">
                         </div>
                     </form>

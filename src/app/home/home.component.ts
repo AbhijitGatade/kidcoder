@@ -10,6 +10,10 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class HomeComponent implements OnInit {
   baseurl = this.api.baseurl;
   teachers: any;
+  classes:any;
+  page : number = 1;
+  itemsPerPage = 3;
+  totalItems : any;
   
   constructor(private api: ApiService) { }
 
@@ -17,6 +21,13 @@ export class HomeComponent implements OnInit {
     this.api.post("admin/teachers", {}).subscribe((result: any) => {
       this.teachers = result.data;
       console.log(this.teachers);
+    });
+
+    this.api.post("admin/courses", {}).subscribe((result:any)=>{
+      this.classes = result.data;
+      this.page =  0;
+      this.totalItems = result.totalCourses;
+      console.log(this.classes);
     })
   }
   

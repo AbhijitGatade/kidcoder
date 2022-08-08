@@ -41,7 +41,8 @@ export class CourseComponent implements OnInit {
         description: new FormControl(this.course == null ? "" : this.course.description, Validators.required),
         photo: new FormControl(""),
         timing: new FormControl(this.course == null ? "" : this.course.timing, Validators.required),
-        fees: new FormControl(this.course == null ? "" : this.course.fees, Validators.required)
+        fees: new FormControl(this.course == null ? "" : this.course.fees, Validators.required),
+        popular: new FormControl(this.course == null ? "" : this.course.popular, Validators.required)
       });
   }
 
